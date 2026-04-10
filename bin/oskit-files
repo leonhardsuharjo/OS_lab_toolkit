@@ -1,0 +1,23 @@
+# os Kit Files
+
+#!/bin/bash
+
+if test $# -ne 1; then
+  echo "Usage: oskit files <path>"
+  exit 1
+fi
+
+p="$1"
+
+if test -f "$p"; then
+  echo "FILE: $p"
+  echo "First 10 lines:"
+  head -n 10 "$p"
+elif test -d "$p"; then
+  echo "DIR: $p"
+  echo -n "Entries count: "
+  ls "$p" | wc -l
+else
+  echo "Neither file nor directory: $p"
+  exit 2
+fi
