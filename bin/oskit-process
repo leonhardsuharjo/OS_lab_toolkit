@@ -1,0 +1,25 @@
+#for OS process
+
+#!/bin/bash
+
+case "$1" in
+  list)
+    ps -f
+    ;;
+  all)
+    ps -faux
+    ;;
+  top)
+    top
+    ;;
+  kill)
+    if test $# -ne 2; then
+      echo "Usage: oskit proc kill <PID>"
+      exit 1
+    fi
+    kill "$2"
+    ;;
+  *)
+    echo "Usage: oskit proc {list|all|top|kill}"
+    ;;
+esac
