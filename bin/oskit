@@ -1,1 +1,14 @@
-#
+#for dispatcher 
+
+#!/bin/bash
+# oskit: small OS/Linux lab toolkit
+
+cmd="$1"
+shift || true
+
+case "$cmd" in
+  files)   ./bin/oskit-files "$@" ;;
+  proc)    ./bin/oskit-proc "$@" ;;
+  help|"") echo "Usage: oskit {files|proc|help}" ;;
+  *)       echo "Unknown command: $cmd"; exit 1 ;;
+esac
